@@ -182,7 +182,7 @@
       .slide--dark .section-label, .slide--dark .muted, .slide--dark .sub-text { color: var(--muted); }
 
       .headline-xl { margin: 0; font-size: 108px; font-weight: 800; line-height: 0.96; letter-spacing: -0.025em; }
-      .headline    { margin: 0; font-size: 64px; font-weight: 780; line-height: 1.0; letter-spacing: -0.022em; }
+      .headline    { margin: 0; font-size: 86px; font-weight: 780; line-height: 1.0; letter-spacing: -0.022em; }
       .italic      { font-style: italic; font-weight: 280; letter-spacing: -0.01em; }
       .muted       { color: #686868; }
 
@@ -261,6 +261,41 @@
       .cover-lead { max-width: 780px; margin-top: 62px; }
       .cover-lead .accent-bar { margin-top: 38px; }
       .eyebrow-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0 0 8px; color: #777; font-size: 12px; font-weight: 760; letter-spacing: 0.34em; text-transform: uppercase; }
+
+      /* ── LOGO CAROUSEL ── */
+      .logo-carousel {
+        position: relative;
+        z-index: 1;
+        padding: 46px 0;
+        overflow: hidden;
+        border-top: 1px solid var(--divider);
+        border-bottom: 1px solid var(--divider);
+        background: transparent;
+      }
+      .logo-carousel__track {
+        display: flex;
+        width: max-content;
+        will-change: transform;
+        animation: logo-marquee 44s linear infinite;
+      }
+      .logo-carousel__group {
+        display: flex;
+        flex: 0 0 auto;
+        align-items: center;
+        gap: 120px;
+        padding-right: 120px;
+      }
+      .logo-carousel img {
+        display: block;
+        width: auto;
+        height: 150px;
+        max-width: none;
+        object-fit: contain;
+      }
+      @keyframes logo-marquee {
+        from { transform: translate3d(-50%, 0, 0); }
+        to { transform: translate3d(0, 0, 0); }
+      }
 
 
       /* ── MARKET / FAN-SPLIT repurposed as BRAND-SPLIT ── */
@@ -470,7 +505,7 @@
         .brand__context { display: none; }
         .container { width: calc(100% - 32px); }
         .slide { min-height: auto; padding: 88px 0 56px; }
-        #cover { min-height: 100svh; padding-top: 88px; }
+        #cover { min-height: 75svh; padding-top: 88px; }
         .side-nav { display: none; }
         .cover-scroll { display: none; }
 
@@ -481,6 +516,11 @@
         .section-label { font-size: 10px; margin-bottom: 28px; letter-spacing: 0.22em; }
         .lead-block { margin-top: 36px; gap: 18px; }
         .lead-block .accent-bar { margin-top: 6px; }
+
+        /* Logo carousel */
+        .logo-carousel { padding: 32px 0; }
+        .logo-carousel__track { animation-duration: 34s; }
+        .logo-carousel__group { gap: 50px; padding-right: 50px; }
 
         /* Grids → columna única */
         .grid--two,
@@ -576,7 +616,7 @@
       /* ── Mobile small ── */
       @media (max-width: 400px) {
         .headline-xl, #cover .headline-xl { font-size: 40px; }
-        .headline { font-size: 26px; }
+        .headline { font-size: 40px; }
         .container { width: calc(100% - 24px); }
         .slide { padding: 80px 0 48px; }
         .topbar { padding: 0 14px; }
@@ -586,6 +626,7 @@
         html { scroll-behavior: auto; }
         *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
         .reveal { opacity: 1; transform: none; }
+        .logo-carousel__track { animation: none !important; transform: none; }
       }
 
       /* ── PARALLAX: solo en pantallas con margen suficiente ── */
@@ -784,6 +825,55 @@
         
       </section>
 
+      <section class="logo-carousel" aria-label="Logos de marcas">
+        <div class="logo-carousel__track">
+          <div class="logo-carousel__group">
+            <img src="logos/1.png" alt="" decoding="async" />
+            <img src="logos/2.png" alt="" decoding="async" />
+            <img src="logos/3.png" alt="" decoding="async" />
+            <img src="logos/4.png" alt="" decoding="async" />
+            <img src="logos/5.png" alt="" decoding="async" />
+            <img src="logos/6.png" alt="" decoding="async" />
+            <img src="logos/7.png" alt="" decoding="async" />
+            <img src="logos/8.png" alt="" decoding="async" />
+            <img src="logos/9.png" alt="" decoding="async" />
+            <img src="logos/10.png" alt="" decoding="async" />
+            <img src="logos/11.png" alt="" decoding="async" />
+            <img src="logos/12.png" alt="" decoding="async" />
+            <img src="logos/13.png" alt="" decoding="async" />
+            <img src="logos/14.png" alt="" decoding="async" />
+            <img src="logos/15.png" alt="" decoding="async" />
+            <img src="logos/16.png" alt="" decoding="async" />
+            <img src="logos/17.png" alt="" decoding="async" />
+            <img src="logos/18.png" alt="" decoding="async" />
+            <img src="logos/19.png" alt="" decoding="async" />
+            <img src="logos/20.png" alt="" decoding="async" />
+          </div>
+          <div class="logo-carousel__group" aria-hidden="true">
+            <img src="logos/1.png" alt="" decoding="async" />
+            <img src="logos/2.png" alt="" decoding="async" />
+            <img src="logos/3.png" alt="" decoding="async" />
+            <img src="logos/4.png" alt="" decoding="async" />
+            <img src="logos/5.png" alt="" decoding="async" />
+            <img src="logos/6.png" alt="" decoding="async" />
+            <img src="logos/7.png" alt="" decoding="async" />
+            <img src="logos/8.png" alt="" decoding="async" />
+            <img src="logos/9.png" alt="" decoding="async" />
+            <img src="logos/10.png" alt="" decoding="async" />
+            <img src="logos/11.png" alt="" decoding="async" />
+            <img src="logos/12.png" alt="" decoding="async" />
+            <img src="logos/13.png" alt="" decoding="async" />
+            <img src="logos/14.png" alt="" decoding="async" />
+            <img src="logos/15.png" alt="" decoding="async" />
+            <img src="logos/16.png" alt="" decoding="async" />
+            <img src="logos/17.png" alt="" decoding="async" />
+            <img src="logos/18.png" alt="" decoding="async" />
+            <img src="logos/19.png" alt="" decoding="async" />
+            <img src="logos/20.png" alt="" decoding="async" />
+          </div>
+        </div>
+      </section>
+
       <!-- ══════════════════════════════════════════════
            02 · MERCADO
       ══════════════════════════════════════════════ -->
@@ -870,7 +960,7 @@
       <!-- ══════════════════════════════════════════════
            03 · DATOS
       ══════════════════════════════════════════════ -->
-      <section id="data" class="slide slide--soft" data-title="Data">
+      <section id="data" class="slide" data-title="Data">
         <div class="container">
           <div class="grid grid--header grid--split" style="margin-bottom: 56px">
             <div>
@@ -1061,7 +1151,7 @@
       <!-- ══════════════════════════════════════════════
            06 · INFRAESTRUCTURA
       ══════════════════════════════════════════════ -->
-      <section id="infrastructure" class="slide slide--soft" data-title="Infrastructure">
+      <section id="infrastructure" class="slide" data-title="Infrastructure">
         <div class="container">
 
           <div class="grid grid--header grid--split" style="margin-bottom: 64px; align-items: end;">
@@ -1318,7 +1408,7 @@
             <div></div>
             <div class="lead-block reveal delay-2" style="margin-top: 0">
               <span class="accent-bar" aria-hidden="true"></span>
-              <p class="sub-text" style="font-size:20px"
+              <p class="sub-text" style="font-size:15px"
                  data-en="The resale market of your brand is active right now. The question is whether the channel that captures it is yours or someone else's." data-es="El mercado de reventa de tu marca está activo ahora mismo. La pregunta es si el canal que lo captura es tuyo o de otro.">El mercado de reventa de tu marca está activo ahora mismo. La pregunta es si el canal que lo captura es tuyo o de otro.</p>
             </div>
           </div>

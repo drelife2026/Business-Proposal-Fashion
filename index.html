@@ -416,58 +416,142 @@
       .delay-3 { transition-delay: 270ms; }
       .delay-4 { transition-delay: 360ms; }
 
-      /* ── RESPONSIVE ── */
+      /* ══════════════════════════════════════════
+         RESPONSIVE
+      ══════════════════════════════════════════ */
+
+      /* ── Tablet large ── */
       @media (max-width: 1400px) {
         .container { width: calc(100% - 160px); }
-        .headline-xl, #cover .headline-xl { font-size: 84px; }
+        .headline-xl, #cover .headline-xl { font-size: 80px; }
         .headline { font-size: 52px; }
         .grid--split, #program .grid--split { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
       }
+
+      /* ── Tablet ── */
       @media (max-width: 1180px) {
-        .container { width: calc(100% - 96px); }
-        .slide { padding: 112px 0 80px; }
-        .grid--split, #program .grid--split { grid-template-columns: 1fr; gap: 48px; }
+        .container { width: calc(100% - 80px); }
+        .slide { padding: 108px 0 72px; }
+        .grid--split, #program .grid--split { grid-template-columns: 1fr; gap: 40px; }
         .side-nav { display: none; }
-        .flow-column--dark { margin-left: 0; }
+        .flow-panel { grid-template-columns: 1fr; }
+        .flow-column { padding: 48px 0; }
+        .flow-column--dark { margin-left: 0; padding: 48px; }
+        .headline-xl { font-size: 68px; }
+        .headline { font-size: 46px; }
+        .benefit-title { white-space: normal; }
       }
-      @media (max-width: 820px) {
-        .benefit-copy { font-size: 13px; line-height: 1.5; }
-        .benefit-title { font-size: 20px; }
-        .tile-kicker { font-size: 10px; }
-        .flow-step { font-size: 22px; }
-        .grid--four { grid-template-columns: 1fr 1fr; gap: 0; }
-        .infra-copy { font-size: 13px; }
-        .infra-title { font-size: 18px; }
-      }
-      @media (max-width: 520px) {
+
+      /* ── Mobile ── */
+      @media (max-width: 768px) {
+        /* Layout base */
+        .topbar { min-height: 56px; padding: 0 18px; gap: 12px; }
+        .brand__context { display: none; }
+        .container { width: calc(100% - 32px); }
+        .slide { min-height: auto; padding: 88px 0 56px; }
+        #cover { min-height: 100svh; padding-top: 88px; }
+        .side-nav { display: none; }
+        .cover-scroll { display: none; }
+
+        /* Tipografía */
+        .headline-xl, #cover .headline-xl { font-size: 38px; line-height: 1.0; letter-spacing: -0.02em; }
+        .headline { font-size: 30px; line-height: 1.06; letter-spacing: -0.016em; }
+        .sub-text { font-size: 15px; line-height: 1.6; }
+        .section-label { font-size: 10px; margin-bottom: 28px; letter-spacing: 0.22em; }
+        .lead-block { margin-top: 36px; gap: 18px; }
+        .lead-block .accent-bar { margin-top: 6px; }
+
+        /* Grids → columna única */
+        .grid--two,
+        .grid--three,
         .grid--four { grid-template-columns: 1fr; }
-      }
-      @media (max-width: 820px) {
-        .topbar { min-height: 58px; padding: 0 20px; }
-        .container { width: calc(100% - 36px); }
-        .slide { min-height: auto; padding: 96px 0 62px; }
-        #cover { min-height: 100vh; padding-top: 96px; }
-        .headline-xl, #cover .headline-xl { font-size: 44px; letter-spacing: -0.02em; }
-        .headline { font-size: 34px; letter-spacing: -0.018em; }
-        .sub-text { font-size: 15px; }
-        .section-label { margin-bottom: 34px; font-size: 10px; }
-        .tile { padding: 30px; }
-        .grid--two, .grid--three, .grid--four, .flow-panel { grid-template-columns: 1fr; }
-        .brand-split { grid-template-columns: 1fr; gap: 40px; }
-        .fashion-gallery { grid-template-columns: 1fr; gap: 18px; margin-top: 52px; }
-        .fashion-frame--lift .fashion-card, .fashion-frame--drop .fashion-card { margin: 0; }
-        .fashion-card { min-height: 0; aspect-ratio: 4/5; }
-        .impact-list { grid-template-columns: 1fr; }
-        #market .tile, .benefit-card { min-height: auto; }
+        .grid--split, #program .grid--split { grid-template-columns: 1fr; gap: 32px; }
+        .grid { gap: 0; }
+
+        /* Tiles abiertos: quitar bordes laterales en columna única */
+        .tile { padding: 28px 0; }
+        .tile:first-child { border-top: 1px solid var(--divider); }
         .grid--three .tile:nth-child(n+2),
-        .grid--four .tile:nth-child(n+2),
-        .grid--three .case-card:nth-child(n+2),
+        .grid--four .tile:nth-child(n+2) { padding-left: 0; border-left: none; }
+        .grid--three .tile:last-child,
+        .grid--four .tile:last-child { border-bottom: 1px solid var(--divider); }
+        .tile--dark { padding: 28px 20px; }
+
+        /* Stats */
+        .stat-value { font-size: 52px; margin-top: 28px; }
+
+        /* Benefit cards */
+        .benefit-card { padding: 28px 0; }
+        .benefit-card:first-child { border-top: 1px solid var(--divider); }
         .grid--four .benefit-card:nth-child(n+2) { padding-left: 0; border-left: none; }
-        .flow-column--dark { margin-left: 0; padding-left: 0; }
-        .program-list li { gap: 18px; min-height: 82px; }
-        .program-text { font-size: 23px; }
-        .closing-footer { align-items: flex-start; flex-direction: column; margin-top: 62px; }
+        .benefit-title { font-size: 18px; white-space: normal; }
+        .benefit-copy { font-size: 14px; }
+
+        /* Flow panel (solución) */
+        .flow-panel { grid-template-columns: 1fr; border-top: none; }
+        .flow-column { padding: 36px 0; border-top: 1px solid rgba(255,255,255,0.14); }
+        .flow-column--dark { margin-left: 0; padding: 36px 28px; }
+        .flow-step { font-size: 22px; }
+        .flow-heading { margin-bottom: 28px; }
+        .flow-copy { margin-top: 24px; }
+
+        /* Mercado split */
+        .brand-split { grid-template-columns: 1fr; gap: 36px; }
+        .brand-tension { font-size: 15px; }
+
+        /* Galería */
+        .fashion-gallery { grid-template-columns: 1fr; gap: 12px; margin-top: 40px; }
+        .fashion-frame--lift .fashion-card,
+        .fashion-frame--drop .fashion-card { margin: 0; }
+        .fashion-card { min-height: 0; aspect-ratio: 3/4; }
+
+        /* Infraestructura */
+        .infra-flow--horizontal { grid-template-columns: 1fr !important; gap: 0 !important; }
+        .infra-flow--horizontal .infra-left { flex-direction: column; align-items: flex-start; margin-bottom: 16px; width: auto; }
+        .infra-flow--horizontal .infra-line { width: 1px; height: 32px; flex: none; margin-left: 0; margin-top: 8px; }
+        .infra-flow--horizontal .infra-step:last-child .infra-line { display: block; }
+        .infra-flow--horizontal .infra-step:last-child { padding-bottom: 0; }
+        .infra-content { padding: 0 0 40px; }
+        .infra-step--last .infra-content { padding-bottom: 0; }
+        .infra-title { font-size: 18px; }
+        .infra-copy { font-size: 13px; }
+        .infra-footer { margin-top: 32px; }
+
+        /* Modelo económico */
+        #economics .container > div[style*="grid-template-columns:repeat(2"] {
+          grid-template-columns: 1fr !important;
+        }
+        #economics [style*="padding:40px 40px 40px 0"] { padding: 32px 0 !important; border-left: none !important; }
+        #economics [style*="padding:40px 0 40px 40px"] { padding: 32px 0 !important; border-left: none !important; }
+        #economics [style*="border-bottom:1px solid rgba(255,255,255,0.10)"] { border-bottom: 1px solid rgba(255,255,255,0.10) !important; }
+
+        /* Cases */
+        .case-card { padding: 28px 0; }
+        .case-card:first-child { border-top: 1px solid var(--divider); }
+        .grid--three .case-card:nth-child(n+2) { padding-left: 0; border-left: none; }
+        .case-logo { margin-bottom: 20px; }
+
+        /* Closing */
+        .closing-footer { flex-direction: column; align-items: flex-start; margin-top: 48px; gap: 16px; }
+        .closing-actions { margin-top: 28px; }
+        .closing-actions .sub-text { font-size: 16px; }
+
+        /* Section headers: subtitle below headline closer */
+        #market .grid--split,
+        #opportunity .grid--split,
+        #cases .grid--split,
+        #infrastructure .grid--split { margin-bottom: 40px !important; }
       }
+
+      /* ── Mobile small ── */
+      @media (max-width: 400px) {
+        .headline-xl, #cover .headline-xl { font-size: 32px; }
+        .headline { font-size: 26px; }
+        .container { width: calc(100% - 24px); }
+        .slide { padding: 80px 0 48px; }
+        .topbar { padding: 0 14px; }
+      }
+
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
         *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }

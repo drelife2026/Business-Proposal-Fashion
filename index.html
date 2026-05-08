@@ -139,7 +139,7 @@
       }
       .slide:first-of-type { border-top: 0; }
       .slide--soft { background: var(--panel); }
-      .slide--dark { background: var(--foreground); color: var(--paper); }
+      .slide--dark { background: var(--background); color: var(--foreground); }
 
       .slide--grid::before {
         content: "";
@@ -148,11 +148,7 @@
                     radial-gradient(ellipse 50% 70% at 80% 30%, rgba(190,255,0,0.025), transparent 60%);
       }
       .slide--dark::before {
-        content: "";
-        position: absolute; inset: 0; pointer-events: none; opacity: 0.018;
-        background-image: repeating-linear-gradient(
-          0deg, transparent, transparent 72px, rgba(255,255,255,0.6) 72px, rgba(255,255,255,0.6) 73px
-        );
+        content: none;
       }
 
       .container {
@@ -166,13 +162,7 @@
         /* parallax only on large screens — see media query below */
       }
       .slide--dark .container::before {
-        content: "";
-        position: absolute; inset: -120px -180px; z-index: 0; pointer-events: none;
-        background: repeating-linear-gradient(116deg, transparent 0 56px, rgba(255,255,255,0.07) 57px 58px, transparent 59px 126px);
-        -webkit-mask-image: linear-gradient(90deg, transparent, #000 16%, #000 82%, transparent);
-        mask-image: linear-gradient(90deg, transparent, #000 16%, #000 82%, transparent);
-        opacity: 0.11;
-        /* parallax only on large screens — see media query below */
+        content: none;
       }
       .slide--dark .container > * { position: relative; z-index: 1; }
 
@@ -189,7 +179,7 @@
         font-size: 11px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase;
       }
       .section-label::before { content: ""; display: inline-block; width: 24px; height: 1px; background: var(--accent); opacity: 0.9; }
-      .slide--dark .section-label, .slide--dark .muted, .slide--dark .sub-text { color: rgba(255,255,255,0.68); }
+      .slide--dark .section-label, .slide--dark .muted, .slide--dark .sub-text { color: var(--muted); }
 
       .headline-xl { margin: 0; font-size: 108px; font-weight: 800; line-height: 0.96; letter-spacing: -0.025em; }
       .headline    { margin: 0; font-size: 64px; font-weight: 780; line-height: 1.0; letter-spacing: -0.022em; }
@@ -201,7 +191,7 @@
       .lead-block { display: flex; align-items: flex-start; gap: 30px; max-width: 760px; margin-top: 72px; }
       .accent-bar { display: block; width: 48px; height: 2px; flex: 0 0 auto; margin-top: 18px; background: var(--accent); }
       .headline + .sub-text, .headline-xl + .sub-text { margin-top: 32px; }
-      .dark-bar { background: var(--paper); }
+      .dark-bar { background: var(--foreground); }
       .divider-top { margin-top: 30px; padding-top: 28px; border-top: 1px solid var(--divider); }
       .callout { display: flex; align-items: center; gap: 16px; font-size: 16px; font-weight: 720; }
 
@@ -256,12 +246,12 @@
       .stat-detail { margin-top: 14px; color: var(--muted); font-size: 14px; font-weight: 400; line-height: 1.55; }
 
       .tile--dark {
-        background: var(--foreground);
-        color: var(--paper);
+        background: transparent;
+        color: var(--foreground);
         padding: 44px 40px;
-        border-color: rgba(255,255,255,0.12);
+        border-color: var(--divider);
       }
-      .tile--dark .tile-kicker, .tile--dark .stat-detail { color: rgba(255,255,255,0.62); }
+      .tile--dark .tile-kicker, .tile--dark .stat-detail { color: var(--muted); }
 
       /* ── COVER ── */
       #cover { padding-top: 140px; }
@@ -324,34 +314,62 @@
 
       /* ── FLOW PANEL ── */
       .flow-panel { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0; border-top: 1px solid var(--divider); }
-      .flow-column { min-height: 0; padding: 64px 64px 64px 0; background: transparent; color: var(--paper); }
-      .flow-column--dark { background: var(--foreground); color: var(--paper); padding: 64px 64px 64px 64px; margin-left: 64px; }
-      .flow-heading { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 42px; color: rgba(255,255,255,0.52); font-size: 11px; font-weight: 800; text-transform: uppercase; }
-      .flow-column--dark .flow-heading { color: rgba(255,255,255,0.62); }
+      .flow-column { min-height: 0; padding: 64px 64px 64px 0; background: transparent; color: var(--foreground); }
+      .flow-column--dark { background: transparent; color: var(--foreground); padding: 64px 64px 64px 64px; margin-left: 64px; border-left: 1px solid var(--divider); }
+      .flow-heading { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 42px; color: var(--muted); font-size: 11px; font-weight: 800; text-transform: uppercase; }
+      .flow-column--dark .flow-heading { color: var(--muted); }
       .flow-divider { width: 24px; height: 1px; background: currentColor; opacity: 0.38; }
       .flow-list { display: grid; gap: 22px; margin: 0; padding: 0; list-style: none; }
       .flow-list li { display: flex; align-items: center; gap: 22px; }
-      .flow-number { width: 28px; color: rgba(255,255,255,0.42); font-size: 12px; font-weight: 700; flex-shrink: 0; }
-      .flow-column--dark .flow-number { color: rgba(255,255,255,0.52); }
-      .flow-step { font-size: 26px; font-weight: 600; line-height: 1.15; color: var(--paper); }
-      .flow-column--dark .flow-step { color: var(--paper); }
-      .flow-step--neon { color: var(--accent) !important; }
-      .flow-line { flex: 1; height: 1px; background: rgba(255,255,255,0.14); min-width: 24px; }
-      .flow-column--dark .flow-line { background: rgba(255,255,255,0.22); }
-      .flow-list li { display: flex; align-items: center; gap: 18px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.12); }
-      .flow-column--dark .flow-list li { border-bottom-color: rgba(255,255,255,0.12); }
+      .flow-number { width: 28px; color: var(--muted); font-size: 12px; font-weight: 700; flex-shrink: 0; }
+      .flow-column--dark .flow-number { color: var(--muted); }
+      .flow-step { font-size: 26px; font-weight: 600; line-height: 1.15; color: var(--foreground); }
+      .flow-column--dark .flow-step { color: var(--foreground); }
+      .flow-step--neon { background-color: var(--accent) !important; }
+      .flow-line { flex: 1; height: 1px; background: var(--divider); min-width: 24px; }
+      .flow-column--dark .flow-line { background: var(--divider); }
+      .flow-list li { display: flex; align-items: center; gap: 18px; padding: 22px 0; border-bottom: 1px solid var(--divider); }
+      .flow-column--dark .flow-list li { border-bottom-color: var(--divider); }
       .flow-list li:last-child { border-bottom: none; }
-      .flow-copy { max-width: 410px; margin: 32px 0 0; color: rgba(255,255,255,0.62); font-size: 14px; font-weight: 400; line-height: 1.58; }
-      .flow-column--dark .flow-copy { color: rgba(255,255,255,0.62); }
+      .flow-copy { max-width: 410px; margin: 32px 0 0; color: var(--muted); font-size: 14px; font-weight: 400; line-height: 1.58; }
+      .flow-column--dark .flow-copy { color: var(--muted); }
 
-      /* ── OPPORTUNITY BENEFIT CARDS ── */
-      .benefit-title, .capability-title, .step-title { margin: 0; font-size: 20px; font-weight: 700; line-height: 1.2; white-space: nowrap; }
-      @media (max-width: 1300px) { .benefit-title { font-size: 17px; } }
-      @media (max-width: 820px) { .benefit-title { white-space: normal; font-size: 18px; } }
-      .benefit-copy, .capability-copy, .step-copy { margin: 12px 0 0; color: var(--muted); font-size: 14px; font-weight: 400; line-height: 1.58; }
-      .benefit-card { display: flex; flex-direction: column; justify-content: flex-start; min-height: 0; padding: 40px 32px 40px 0; border-top: 1px solid var(--divider); }
-      .benefit-card:last-child { border-bottom: 1px solid var(--divider); }
-      .grid--four .benefit-card:nth-child(n+2) { padding-left: 32px; border-left: 1px solid var(--divider); }
+      /* ── OPPORTUNITY LEVERS ── */
+      .opportunity-process {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(520px, 0.95fr);
+        align-items: start;
+        gap: 96px;
+      }
+      .opportunity-copy { max-width: 520px; margin-top: 34px; }
+      .lever-list {
+        display: grid;
+        gap: 44px;
+        margin: 0;
+        padding: 8px 0 0;
+        list-style: none;
+      }
+      .lever-item {
+        display: grid;
+        grid-template-columns: 58px minmax(0, 1fr);
+        align-items: start;
+        gap: 26px;
+      }
+      .lever-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        background: rgba(190,255,0,0.68);
+        color: var(--foreground);
+        font-size: 13px;
+        font-weight: 760;
+        letter-spacing: 0.08em;
+      }
+      .lever-title { margin: 0; font-size: 18px; font-weight: 780; line-height: 1.18; letter-spacing: -0.01em; }
+      .lever-copy { margin: 7px 0 0; color: var(--muted); font-size: 15px; line-height: 1.48; }
 
       /* ── IMPACT BOX ── */
       .insight-stack { display: grid; gap: 22px; }
@@ -384,8 +402,10 @@
       .case-card { min-height: 0; display: flex; flex-direction: column; justify-content: flex-start; padding: 44px 32px 44px 0; border-top: 1px solid var(--divider); }
       .case-card:last-child { border-bottom: 1px solid var(--divider); }
       .grid--three .case-card:nth-child(n+2) { padding-left: 32px; border-left: 1px solid var(--divider); }
-      .case-logo { height: 40px; display: flex; align-items: center; margin-bottom: 32px; }
-      .case-logo-text { font-size: 20px; font-weight: 800; letter-spacing: -0.02em; }
+      .case-logo { height: 72px; display: flex; align-items: center; margin-bottom: 32px; }
+      .case-logo img { display: block; width: auto; max-width: min(100%, 230px); max-height: 58px; object-fit: contain; }
+      .case-logo__image--wide { max-height: 30px !important; }
+      .case-logo__image--stacked { max-height: 70px !important; }
       .case-title { font-size: 20px; font-weight: 750; margin: 0 0 16px; letter-spacing: -0.01em; }
       .case-copy { font-size: 14px; color: var(--muted); line-height: 1.58; margin: 0; }
 
@@ -400,12 +420,12 @@
       .program-list li:hover .program-accent { width: 70px; background: var(--accent); }
 
       /* ── CLOSING ── */
-      .closing-footer { display: flex; align-items: flex-end; justify-content: space-between; gap: 26px; margin-top: 110px; padding-top: 48px; border-top: 1px solid rgba(255,255,255,0.2); }
+      .closing-footer { display: flex; align-items: flex-end; justify-content: space-between; gap: 26px; margin-top: 110px; padding-top: 48px; border-top: 1px solid var(--divider); }
       .closing-actions { display: grid; gap: 14px; max-width: 780px; margin-top: 42px; }
       .closing-actions .sub-text { margin: 0; font-size: 17px; line-height: 1.5; }
       .closing-actions a { border-bottom: 1px solid currentColor; overflow-wrap: anywhere; }
-      .closing-footer small { display: block; margin-bottom: 8px; color: rgba(255,255,255,0.48); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.34em; }
-      .footer-mark { display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,0.52); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.34em; }
+      .closing-footer small { display: block; margin-bottom: 8px; color: var(--muted); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.34em; }
+      .footer-mark { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.34em; }
 
       /* ── REVEAL ── */
       .reveal { opacity: 0; transform: translateY(24px); transition: opacity 760ms cubic-bezier(0.22,1,0.36,1), transform 760ms cubic-bezier(0.22,1,0.36,1); }
@@ -435,16 +455,18 @@
         .side-nav { display: none; }
         .flow-panel { grid-template-columns: 1fr; }
         .flow-column { padding: 48px 0; }
-        .flow-column--dark { margin-left: 0; padding: 48px; }
+        .flow-column--dark { margin-left: 0; padding: 48px 0; border-left: none; border-top: 1px solid var(--divider); }
         .headline-xl { font-size: 68px; }
         .headline { font-size: 46px; }
-        .benefit-title { white-space: normal; }
+        .opportunity-process { grid-template-columns: 1fr; gap: 48px; }
+        .lever-list { max-width: 760px; }
       }
 
       /* ── Mobile ── */
       @media (max-width: 768px) {
         /* Layout base */
         .topbar { min-height: 56px; padding: 0 18px; gap: 12px; }
+        .progress { top: 56px; }
         .brand__context { display: none; }
         .container { width: calc(100% - 32px); }
         .slide { min-height: auto; padding: 88px 0 56px; }
@@ -482,17 +504,19 @@
         /* Stats */
         .stat-value { font-size: 52px; margin-top: 28px; }
 
-        /* Benefit cards */
-        .benefit-card { padding: 28px 0; }
-        .benefit-card:first-child { border-top: 1px solid var(--divider); }
-        .grid--four .benefit-card:nth-child(n+2) { padding-left: 0; border-left: none; }
-        .benefit-title { font-size: 18px; white-space: normal; }
-        .benefit-copy { font-size: 14px; }
+        /* Opportunity levers */
+        .opportunity-process { gap: 36px; }
+        .opportunity-copy { margin-top: 28px; }
+        .lever-list { gap: 30px; padding-top: 0; }
+        .lever-item { grid-template-columns: 44px minmax(0, 1fr); gap: 16px; }
+        .lever-number { width: 44px; height: 44px; font-size: 12px; }
+        .lever-title { font-size: 17px; }
+        .lever-copy { font-size: 14px; line-height: 1.52; }
 
         /* Flow panel (solución) */
         .flow-panel { grid-template-columns: 1fr; border-top: none; }
-        .flow-column { padding: 36px 0; border-top: 1px solid rgba(255,255,255,0.14); }
-        .flow-column--dark { margin-left: 0; padding: 36px 28px; }
+        .flow-column { padding: 36px 0; border-top: 1px solid var(--divider); }
+        .flow-column--dark { margin-left: 0; padding: 36px 0; border-left: none; }
         .flow-step { font-size: 22px; }
         .flow-heading { margin-bottom: 28px; }
         .flow-copy { margin-top: 24px; }
@@ -525,13 +549,14 @@
         }
         #economics [style*="padding:40px 40px 40px 0"] { padding: 32px 0 !important; border-left: none !important; }
         #economics [style*="padding:40px 0 40px 40px"] { padding: 32px 0 !important; border-left: none !important; }
-        #economics [style*="border-bottom:1px solid rgba(255,255,255,0.10)"] { border-bottom: 1px solid rgba(255,255,255,0.10) !important; }
+        #economics [style*="border-bottom:1px solid var(--divider)"] { border-bottom: 1px solid var(--divider) !important; }
 
         /* Cases */
         .case-card { padding: 28px 0; }
         .case-card:first-child { border-top: 1px solid var(--divider); }
         .grid--three .case-card:nth-child(n+2) { padding-left: 0; border-left: none; }
-        .case-logo { margin-bottom: 20px; }
+        .case-logo { height: 66px; margin-bottom: 20px; }
+        .case-logo img { max-height: 58px; }
 
         /* Closing */
         .closing-footer { flex-direction: column; align-items: flex-start; margin-top: 48px; gap: 16px; }
@@ -576,32 +601,30 @@
       }
 
       /* ── INFRA HORIZONTAL (desktop) ── */
-      @media (min-width: 1024px) {
+      @media (min-width: 1181px) {
         .infra-flow--horizontal {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 0 32px;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          grid-template-rows: 72px auto auto minmax(136px, auto) auto;
+          column-gap: 24px;
+          row-gap: 0;
           max-width: 100%;
           align-items: start;
         }
-        /* Each step: column layout (number on top, content below) */
-        .infra-flow--horizontal .infra-step {
-          display: flex;
-          flex-direction: column;
-          gap: 0;
+        .infra-flow--horizontal .infra-step,
+        .infra-flow--horizontal .infra-content {
+          display: contents;
         }
-        /* Top row: dot + horizontal line */
         .infra-flow--horizontal .infra-left {
           display: flex;
           flex-direction: row;
           align-items: center;
+          grid-row: 1;
           width: 100%;
-          margin-bottom: 24px;
         }
         .infra-flow--horizontal .infra-dot {
           flex-shrink: 0;
         }
-        /* The line goes horizontally to the right */
         .infra-flow--horizontal .infra-line {
           width: 100%;
           height: 1px;
@@ -614,12 +637,66 @@
         .infra-flow--horizontal .infra-step:last-child .infra-line {
           display: none;
         }
-        /* Content sits below the dot row */
-        .infra-flow--horizontal .infra-content {
-          padding: 0;
+        .infra-flow--horizontal .infra-eyebrow {
+          grid-row: 2;
+          margin: 0 0 8px;
         }
-        .infra-flow--horizontal .infra-step--last .infra-content {
-          padding-bottom: 0;
+        .infra-flow--horizontal .infra-title {
+          grid-row: 3;
+          margin: 0;
+          font-size: clamp(12px, 1.02vw, 16px);
+          line-height: 1.16;
+          letter-spacing: -0.02em;
+          white-space: nowrap;
+        }
+        .infra-flow--horizontal .infra-copy {
+          grid-row: 4;
+          margin-top: 18px;
+          font-size: 14px;
+          line-height: 1.58;
+        }
+        .infra-flow--horizontal .infra-tag {
+          grid-row: 5;
+          align-self: start;
+          justify-self: start;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 34px;
+          max-width: 100%;
+          margin-top: 22px;
+          padding: 0 12px;
+          font-size: 10.5px;
+          line-height: 1;
+          white-space: nowrap;
+        }
+        .infra-flow--horizontal .infra-step:nth-child(1) .infra-left,
+        .infra-flow--horizontal .infra-step:nth-child(1) .infra-eyebrow,
+        .infra-flow--horizontal .infra-step:nth-child(1) .infra-title,
+        .infra-flow--horizontal .infra-step:nth-child(1) .infra-copy,
+        .infra-flow--horizontal .infra-step:nth-child(1) .infra-tag {
+          grid-column: 1;
+        }
+        .infra-flow--horizontal .infra-step:nth-child(2) .infra-left,
+        .infra-flow--horizontal .infra-step:nth-child(2) .infra-eyebrow,
+        .infra-flow--horizontal .infra-step:nth-child(2) .infra-title,
+        .infra-flow--horizontal .infra-step:nth-child(2) .infra-copy,
+        .infra-flow--horizontal .infra-step:nth-child(2) .infra-tag {
+          grid-column: 2;
+        }
+        .infra-flow--horizontal .infra-step:nth-child(3) .infra-left,
+        .infra-flow--horizontal .infra-step:nth-child(3) .infra-eyebrow,
+        .infra-flow--horizontal .infra-step:nth-child(3) .infra-title,
+        .infra-flow--horizontal .infra-step:nth-child(3) .infra-copy,
+        .infra-flow--horizontal .infra-step:nth-child(3) .infra-tag {
+          grid-column: 3;
+        }
+        .infra-flow--horizontal .infra-step:nth-child(4) .infra-left,
+        .infra-flow--horizontal .infra-step:nth-child(4) .infra-eyebrow,
+        .infra-flow--horizontal .infra-step:nth-child(4) .infra-title,
+        .infra-flow--horizontal .infra-step:nth-child(4) .infra-copy,
+        .infra-flow--horizontal .infra-step:nth-child(4) .infra-tag {
+          grid-column: 4;
         }
       }
     </style>
@@ -855,7 +932,7 @@
       <!-- ══════════════════════════════════════════════
            04 · SOLUCIÓN
       ══════════════════════════════════════════════ -->
-      <section id="solution" class="slide slide--dark" data-title="Solution">
+      <section id="solution" class="slide" data-title="Solution">
         <div class="container">
           <div style="max-width: 760px; margin-bottom: 70px">
             <div class="section-label reveal"
@@ -916,71 +993,67 @@
       ══════════════════════════════════════════════ -->
       <section id="opportunity" class="slide" data-title="Opportunity">
         <div class="container">
-          <div class="grid grid--header grid--split" style="margin-bottom: 56px">
-            <div>
+          <div class="opportunity-process">
+            <div class="opportunity-intro">
               <div class="section-label reveal"
                    data-en="05 Opportunity" data-es="05 Oportunidad">05 Oportunidad</div>
               <h2 class="headline reveal delay-1">
                 <span data-en="Four levers," data-es="Cuatro palancas,">Cuatro palancas,</span><br />
                 <span class="italic" data-en="one channel." data-es="un canal.">un canal.</span>
               </h2>
+              <p class="sub-text opportunity-copy reveal delay-2"
+                 data-en="An official pre-owned channel unlocks value across four dimensions that compound over time."
+                 data-es="Un canal oficial de pre-owned desbloquea valor en cuatro dimensiones que se acumulan con el tiempo.">
+                Un canal oficial de pre-owned desbloquea valor en cuatro dimensiones que se acumulan con el tiempo.
+              </p>
             </div>
-            <p class="sub-text reveal delay-2"
-               data-en="An official pre-owned channel unlocks value across four dimensions that compound over time."
-               data-es="Un canal oficial de pre-owned desbloquea valor en cuatro dimensiones que se acumulan con el tiempo.">
-              Un canal oficial de pre-owned desbloquea valor en cuatro dimensiones que se acumulan con el tiempo.
-            </p>
-          </div>
 
-          <div class="tile-grid grid--four">
-            <article class="tile benefit-card reveal delay-1">
-              <span class="tile-kicker">01</span>
-              <div>
-                <p class="benefit-title" data-en="Reactivates purchase" data-es="Reactiva la compra">Reactiva la compra</p>
-                <span class="accent-bar" aria-hidden="true" style="margin-top:18px"></span>
-                <p class="benefit-copy"
+            <ol class="lever-list" aria-label="Cuatro palancas">
+              <li class="lever-item reveal delay-1">
+                <span class="lever-number">01</span>
+                <div>
+                  <h3 class="lever-title" data-en="Reactivates purchase" data-es="Reactiva la compra">Reactiva la compra</h3>
+                  <p class="lever-copy"
                    data-en="Store credit turns the customer who trades in into a repeat buyer. The pre-owned channel feeds your primary sales channel."
                    data-es="El crédito en tienda convierte al cliente que entrega en comprador recurrente. El canal pre-owned alimenta tu primera venta.">
-                  El crédito en tienda convierte al cliente que entrega en comprador recurrente. El canal pre-owned alimenta tu primera venta.
-                </p>
-              </div>
-            </article>
-            <article class="tile benefit-card reveal delay-2">
-              <span class="tile-kicker">02</span>
-              <div>
-                <p class="benefit-title" data-en="Demand intelligence" data-es="Inteligencia de demanda">Inteligencia de demanda</p>
-                <span class="accent-bar" aria-hidden="true" style="margin-top:18px"></span>
-                <p class="benefit-copy"
+                    El crédito en tienda convierte al cliente que entrega en comprador recurrente. El canal pre-owned alimenta tu primera venta.
+                  </p>
+                </div>
+              </li>
+              <li class="lever-item reveal delay-2">
+                <span class="lever-number">02</span>
+                <div>
+                  <h3 class="lever-title" data-en="Demand intelligence" data-es="Inteligencia de demanda">Inteligencia de demanda</h3>
+                  <p class="lever-copy"
                    data-en="Which pieces hold value, at what price, and how long after purchase. Resale data is the most honest signal you can get."
                    data-es="Qué prendas retienen valor, a qué precio y cuánto tiempo después de la compra. Los datos de reventa son la señal más honesta del mercado.">
-                  Qué prendas retienen valor, a qué precio y cuánto tiempo después de la compra. Los datos de reventa son la señal más honesta del mercado.
-                </p>
-              </div>
-            </article>
-            <article class="tile benefit-card reveal delay-3">
-              <span class="tile-kicker">03</span>
-              <div>
-                <p class="benefit-title" data-en="Owned SEO and visibility" data-es="SEO y visibilidad propios">SEO y visibilidad propios</p>
-                <span class="accent-bar" aria-hidden="true" style="margin-top:18px"></span>
-                <p class="benefit-copy"
+                    Qué prendas retienen valor, a qué precio y cuánto tiempo después de la compra. Los datos de reventa son la señal más honesta del mercado.
+                  </p>
+                </div>
+              </li>
+              <li class="lever-item reveal delay-3">
+                <span class="lever-number">03</span>
+                <div>
+                  <h3 class="lever-title" data-en="Owned SEO and visibility" data-es="SEO y visibilidad propios">SEO y visibilidad propios</h3>
+                  <p class="lever-copy"
                    data-en="When someone searches your brand pre-owned, they find your channel. Not a third-party platform."
                    data-es="Cuando alguien busca tu marca pre-owned, encuentra tu canal. No el de una plataforma de terceros.">
-                  Cuando alguien busca tu marca pre-owned, encuentra tu canal. No el de una plataforma de terceros.
-                </p>
-              </div>
-            </article>
-            <article class="tile benefit-card reveal delay-4">
-              <span class="tile-kicker">04</span>
-              <div>
-                <p class="benefit-title" data-en="Regulatory readiness" data-es="Preparación regulatoria">Preparación regulatoria</p>
-                <span class="accent-bar" aria-hidden="true" style="margin-top:18px"></span>
-                <p class="benefit-copy"
+                    Cuando alguien busca tu marca pre-owned, encuentra tu canal. No el de una plataforma de terceros.
+                  </p>
+                </div>
+              </li>
+              <li class="lever-item reveal delay-4">
+                <span class="lever-number">04</span>
+                <div>
+                  <h3 class="lever-title" data-en="Regulatory readiness" data-es="Preparación regulatoria">Preparación regulatoria</h3>
+                  <p class="lever-copy"
                    data-en="The EU product lifecycle regulation comes into force in 2027. Brands that act now will arrive with the channel already live."
                    data-es="La regulación UE de ciclo de vida entra en vigor en 2027. Las marcas que actúen ahora llegan con el canal operativo.">
-                  La regulación UE de ciclo de vida entra en vigor en 2027. Las marcas que actúen ahora llegan con el canal operativo.
-                </p>
-              </div>
-            </article>
+                    La regulación UE de ciclo de vida entra en vigor en 2027. Las marcas que actúen ahora llegan con el canal operativo.
+                  </p>
+                </div>
+              </li>
+            </ol>
           </div>
         </div>
       </section>
@@ -1095,7 +1168,7 @@
       <!-- ══════════════════════════════════════════════
            07 · MODELO ECONÓMICO
       ══════════════════════════════════════════════ -->
-      <section id="economics" class="slide slide--dark dark-sweep" data-title="Economics">
+      <section id="economics" class="slide" data-title="Economics">
         <div class="container">
           <div style="max-width: 780px; margin-bottom: 64px;">
             <div class="section-label reveal"
@@ -1111,46 +1184,46 @@
             </p>
           </div>
 
-          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid rgba(255,255,255,0.14);margin-bottom:48px;" class="reveal delay-2">
-            <div style="padding:40px 40px 40px 0;border-bottom:1px solid rgba(255,255,255,0.10);">
-              <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,0.42);margin-bottom:14px;"
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--divider);margin-bottom:48px;" class="reveal delay-2">
+            <div style="padding:40px 40px 40px 0;border-bottom:1px solid var(--divider);">
+              <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;color:var(--muted);margin-bottom:14px;"
                    data-en="How it works" data-es="Cómo funciona">Cómo funciona</div>
-              <div style="font-size:20px;font-weight:700;color:var(--paper);margin-bottom:10px;"
+              <div style="font-size:20px;font-weight:700;color:var(--foreground);margin-bottom:10px;"
                    data-en="Plug and play model" data-es="Modelo plug and play">Modelo plug and play</div>
-              <p style="font-size:14px;color:rgba(255,255,255,0.62);line-height:1.65;"
+              <p style="font-size:14px;color:var(--muted);line-height:1.65;"
                  data-en="The brand defines the sale price of each piece. Drelife operates everything else: logistics, validation, storage, fulfillment. A plug and play model, without investment in own infrastructure."
                  data-es="La marca define el precio de venta de cada pieza. Drelife opera todo lo demás: logística, validación, almacenamiento, fulfillment. Un modelo plug and play, sin inversión en estructura propia.">
                 La marca define el precio de venta de cada pieza. Drelife opera todo lo demás: logística, validación, almacenamiento, fulfillment. Un modelo plug and play, sin inversión en estructura propia.
               </p>
             </div>
-            <div style="padding:40px 0 40px 40px;border-left:1px solid rgba(255,255,255,0.10);border-bottom:1px solid rgba(255,255,255,0.10);">
-              <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,0.42);margin-bottom:14px;"
+            <div style="padding:40px 0 40px 40px;border-left:1px solid var(--divider);border-bottom:1px solid var(--divider);">
+              <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;color:var(--muted);margin-bottom:14px;"
                    data-en="The virtuous cycle" data-es="El ciclo virtuoso">El ciclo virtuoso</div>
-              <div style="font-size:20px;font-weight:700;color:var(--paper);margin-bottom:10px;"
+              <div style="font-size:20px;font-weight:700;color:var(--foreground);margin-bottom:10px;"
                    data-en="Pre-owned feeds primary sales" data-es="Pre-owned alimenta la primera venta">Pre-owned alimenta la primera venta</div>
-              <p style="font-size:14px;color:rgba(255,255,255,0.62);line-height:1.65;"
+              <p style="font-size:14px;color:var(--muted);line-height:1.65;"
                  data-en="Store credit incentivises return purchase. The customer who trades in has a reason to buy new again. Pre-owned does not cannibalise your channel, it reactivates it."
                  data-es="El crédito en tienda incentiva la recompra. El cliente que entrega tiene un motivo para volver a comprar nuevo. El pre-owned no canibaliza tu canal, lo reactiva.">
                 El crédito en tienda incentiva la recompra. El cliente que entrega tiene un motivo para volver a comprar nuevo. El pre-owned no canibaliza tu canal, lo reactiva.
               </p>
             </div>
-            <div style="padding:40px 0 40px 40px;border-left:1px solid rgba(255,255,255,0.10);border-bottom:1px solid rgba(255,255,255,0.10);">
-              <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,0.42);margin-bottom:14px;"
+            <div style="padding:40px 0 40px 40px;border-left:1px solid var(--divider);border-bottom:1px solid var(--divider);">
+              <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;color:var(--muted);margin-bottom:14px;"
                    data-en="Zero inventory risk" data-es="Cero riesgo de inventario">Cero riesgo de inventario</div>
-              <div style="font-size:20px;font-weight:700;color:var(--paper);margin-bottom:10px;"
+              <div style="font-size:20px;font-weight:700;color:var(--foreground);margin-bottom:10px;"
                    data-en="Operated from our warehouse" data-es="Operado desde nuestro almacén">Operado desde nuestro almacén</div>
-              <p style="font-size:14px;color:rgba(255,255,255,0.62);line-height:1.65;"
+              <p style="font-size:14px;color:var(--muted);line-height:1.65;"
                  data-en="Products are received, inspected, photographed and stored in Drelife's logistics centre. The brand does not build operational infrastructure. We manage the physical product from collection to delivery to the final buyer."
                  data-es="Los productos se reciben, inspeccionan, fotografían y almacenan en el centro logístico de Drelife. La marca no construye infraestructura operativa. Gestionamos el producto físico desde la recogida hasta la entrega al comprador final.">
                 Los productos se reciben, inspeccionan, fotografían y almacenan en el centro logístico de Drelife. La marca no construye infraestructura operativa. Gestionamos el producto físico desde la recogida hasta la entrega al comprador final.
               </p>
             </div>
-            <div style="padding:40px 0 40px 40px;border-left:1px solid rgba(255,255,255,0.10);">
-              <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,0.42);margin-bottom:14px;"
+            <div style="padding:40px 0 40px 40px;border-left:1px solid var(--divider);">
+              <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.2em;color:var(--muted);margin-bottom:14px;"
                    data-en="The real question" data-es="La pregunta real">La pregunta real</div>
-              <div style="font-size:20px;font-weight:700;color:var(--accent);margin-bottom:10px;" 
+              <div style="font-size:20px;font-weight:700;background-color:var(--accent);margin-bottom:10px;max-width: fit-content;" 
                    data-en="The most efficient acquisition channel" data-es="El canal de adquisición más eficiente">El canal de adquisición más eficiente</div>
-              <p style="font-size:14px;color:rgba(255,255,255,0.62);line-height:1.65;"
+              <p style="font-size:14px;color:var(--muted);line-height:1.65;"
                  data-en="The cost of acquiring a new customer in fashion ranges between €30 and €120. The cost of reactivating an existing customer through the pre-owned channel is structurally lower and generates first-party data on their purchase behaviour."
                  data-es="El coste de adquisición de un cliente nuevo en moda oscila entre €30 y €120. El coste de reactivar a un cliente existente a través del canal pre-owned es estructuralmente inferior y genera datos propios sobre su comportamiento de compra.">
                 El coste de adquisición de un cliente nuevo en moda oscila entre €30 y €120. El coste de reactivar a un cliente existente a través del canal pre-owned es estructuralmente inferior y genera datos propios sobre su comportamiento de compra.
@@ -1185,7 +1258,7 @@
 
             <article class="tile case-card reveal delay-1">
               <div class="case-logo">
-                <span class="case-logo-text">Armand Basi</span>
+                <img class="case-logo__image--wide" src="imagenes/armandbasi.png" alt="Armand Basi" />
               </div>
               <div>
                 <h3 class="case-title">Armand Basi</h3>
@@ -1199,7 +1272,7 @@
 
             <article class="tile case-card reveal delay-2">
               <div class="case-logo">
-                <span class="case-logo-text">FC Barcelona</span>
+                <img src="imagenes/fcbarcelona.png" alt="FC Barcelona" />
               </div>
               <div>
                 <h3 class="case-title">FC Barcelona</h3>
@@ -1213,14 +1286,14 @@
 
             <article class="tile case-card reveal delay-3">
               <div class="case-logo">
-                <span class="case-logo-text">Invitadísima</span>
+                <img class="case-logo__image--stacked" src="imagenes/invitadisima.png" alt="INVITADISIMA" />
               </div>
               <div>
-                <h3 class="case-title">Invitadísima</h3>
+                <h3 class="case-title">INVITADISIMA</h3>
                 <p class="case-copy"
                    data-en="A fashion rental and resale brand that built its business model around circularity from day one. Their channel demonstrates that pre-owned is not a complement to the brand experience, it is the brand experience."
-                   data-es="Una marca de alquiler y reventa de moda que construyó su modelo de negocio sobre la circularidad desde el primer día. Su canal demuestra que el pre-owned no es un complemento a la experiencia de marca, es la experiencia de marca.">
-                  Una marca de alquiler y reventa de moda que construyó su modelo de negocio sobre la circularidad desde el primer día. Su canal demuestra que el pre-owned no es un complemento a la experiencia de marca, es la experiencia de marca.
+                   data-es="Una marca de moda para eventos, fiestas y ocasiones especiales con la que hemos activado un canal para dar una segunda vida a sus piezas y hacer que puedan seguir formando parte de nuevos momentos especiales.">
+                  Una marca de moda para eventos, fiestas y ocasiones especiales con la que hemos activado un canal para dar una segunda vida a sus piezas y hacer que puedan seguir formando parte de nuevos momentos especiales.
                 </p>
               </div>
             </article>
@@ -1232,7 +1305,7 @@
       <!-- ══════════════════════════════════════════════
            08 · CIERRE
       ══════════════════════════════════════════════ -->
-      <section id="closing" class="slide slide--dark" data-title="Closing">
+      <section id="closing" class="slide" data-title="Closing">
         <div class="container">
           <div class="section-label reveal"
                data-en="09 Closing" data-es="09 Cierre">09 Cierre</div>

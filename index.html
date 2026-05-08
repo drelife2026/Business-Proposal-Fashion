@@ -536,6 +536,10 @@
         .closing-actions { margin-top: 28px; }
         .closing-actions .sub-text { font-size: 16px; }
 
+        /* Dark slides: disable parallax offset on mobile */
+        .slide--dark .container { transform: none !important; }
+        .slide--dark .container::before { inset: 0; }
+
         /* Section headers: subtitle below headline closer */
         #market .grid--split,
         #opportunity .grid--split,

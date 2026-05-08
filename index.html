@@ -163,8 +163,7 @@
 
       /* ── DARK SLIDE FX ── */
       .slide--dark .container {
-        transform: translate3d(var(--speed-shift), 0, 0);
-        will-change: transform;
+        /* parallax only on large screens — see media query below */
       }
       .slide--dark .container::before {
         content: "";
@@ -173,8 +172,7 @@
         -webkit-mask-image: linear-gradient(90deg, transparent, #000 16%, #000 82%, transparent);
         mask-image: linear-gradient(90deg, transparent, #000 16%, #000 82%, transparent);
         opacity: 0.11;
-        transform: translate3d(var(--speed-shift-inverse), 0, 0);
-        will-change: transform;
+        /* parallax only on large screens — see media query below */
       }
       .slide--dark .container > * { position: relative; z-index: 1; }
 
@@ -540,10 +538,6 @@
         /* Section header grids: gap reducido */
         .grid--header { gap: 12px; }
 
-        /* Dark slides: disable parallax offset on mobile */
-        .slide--dark .container { transform: none !important; }
-        .slide--dark .container::before { inset: 0; }
-
         /* Section headers: subtitle below headline closer */
         #market .grid--split,
         #opportunity .grid--split,
@@ -564,6 +558,18 @@
         html { scroll-behavior: auto; }
         *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
         .reveal { opacity: 1; transform: none; }
+      }
+
+      /* ── PARALLAX: solo en pantallas con margen suficiente ── */
+      @media (min-width: 1180px) {
+        .slide--dark .container {
+          transform: translate3d(var(--speed-shift), 0, 0);
+          will-change: transform;
+        }
+        .slide--dark .container::before {
+          transform: translate3d(var(--speed-shift-inverse), 0, 0);
+          will-change: transform;
+        }
       }
 
       /* ── INFRA HORIZONTAL (desktop) ── */

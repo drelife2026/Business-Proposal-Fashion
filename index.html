@@ -213,6 +213,7 @@
 
       /* ── GRID ── */
       .grid { display: grid; gap: 56px; }
+      .grid--header { gap: 48px; }
       .grid--two   { grid-template-columns: repeat(2, minmax(0,1fr)); }
       .grid--three { grid-template-columns: repeat(3, minmax(0,1fr)); }
       .grid--four  { grid-template-columns: repeat(4, minmax(0,1fr)); }
@@ -536,6 +537,9 @@
         .closing-actions { margin-top: 28px; }
         .closing-actions .sub-text { font-size: 16px; }
 
+        /* Section header grids: gap reducido */
+        .grid--header { gap: 12px; }
+
         /* Dark slides: disable parallax offset on mobile */
         .slide--dark .container { transform: none !important; }
         .slide--dark .container::before { inset: 0; }
@@ -645,8 +649,6 @@
         </a>
       </div>
       <div class="meta">
-        <span class="meta__year" data-en="2026 Deck" data-es="Deck 2026">Deck 2026</span>
-        <span class="meta__divider" aria-hidden="true"></span>
         <span data-en="Confidential" data-es="Confidencial">Confidencial</span>
       </div>
     </header>
@@ -784,7 +786,7 @@
       ══════════════════════════════════════════════ -->
       <section id="data" class="slide slide--soft" data-title="Data">
         <div class="container">
-          <div class="grid grid--split" style="margin-bottom: 56px">
+          <div class="grid grid--header grid--split" style="margin-bottom: 56px">
             <div>
               <div class="section-label reveal"
                    data-en="03 Data" data-es="03 Datos">03 Datos</div>
@@ -905,7 +907,7 @@
       ══════════════════════════════════════════════ -->
       <section id="opportunity" class="slide" data-title="Opportunity">
         <div class="container">
-          <div class="grid grid--split" style="margin-bottom: 56px">
+          <div class="grid grid--header grid--split" style="margin-bottom: 56px">
             <div>
               <div class="section-label reveal"
                    data-en="05 Opportunity" data-es="05 Oportunidad">05 Oportunidad</div>
@@ -980,7 +982,7 @@
       <section id="infrastructure" class="slide slide--soft" data-title="Infrastructure">
         <div class="container">
 
-          <div class="grid grid--split" style="margin-bottom: 64px; align-items: end;">
+          <div class="grid grid--header grid--split" style="margin-bottom: 64px; align-items: end;">
             <div>
               <div class="section-label reveal"
                    data-en="06 Infrastructure" data-es="06 Infraestructura">06 Infraestructura</div>
@@ -1086,7 +1088,7 @@
       ══════════════════════════════════════════════ -->
       <section id="economics" class="slide slide--dark dark-sweep" data-title="Economics">
         <div class="container">
-          <div style="max-width: 780px; margin-bottom: 64px">
+          <div style="max-width: 780px; margin-bottom: 64px;">
             <div class="section-label reveal"
                  data-en="07 Economics" data-es="07 Modelo económico">07 Modelo económico</div>
             <h2 class="headline reveal delay-1">
@@ -1154,7 +1156,7 @@
       ══════════════════════════════════════════════ -->
       <section id="cases" class="slide" data-title="Cases">
         <div class="container">
-          <div class="grid grid--split" style="margin-bottom: 56px">
+          <div class="grid grid--header grid--split" style="margin-bottom: 56px">
             <div>
               <div class="section-label reveal"
                    data-en="08 References" data-es="08 Referencias">08 Referencias</div>
@@ -1256,7 +1258,7 @@
             </div>
             <div class="footer-mark">
               <span class="accent-dot" aria-hidden="true"></span>
-              <span data-en="Drelife · Fashion Vertical · 2026" data-es="Drelife · Vertical Moda · 2026">Drelife · Vertical Moda · 2026</span>
+              <span data-en="Drelife · Fashion Vertical · Deck 2026" data-es="Drelife · Vertical Moda · Deck 2026">Drelife · Vertical Moda · Deck 2026</span>
             </div>
           </div>
         </div>

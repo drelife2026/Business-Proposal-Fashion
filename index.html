@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Drelife Fashion | Presentación Marketplace Pre-owned</title>
-    <meta name="description" content="Drelife ayuda a marcas de moda premium a lanzar y controlar su canal oficial de reventa pre-owned." />
+    <meta name="description" content="Drelife ayuda a marcas de moda premium a lanzar y controlar su canal oficial de reventa pre-owned como punto de entrada a una infraestructura circular." />
 
     <style>
       :root {
@@ -242,6 +242,12 @@
       .tile-kicker { color: var(--muted); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0; }
 
       .stat-value  { margin-top: 52px; font-size: 72px; font-weight: 800; line-height: 0.92; letter-spacing: -0.03em; }
+      #data .stat-value {
+        font-size: clamp(84px, 8vw, 132px);
+        font-weight: 820;
+        line-height: 0.86;
+        letter-spacing: -0.04em;
+      }
       .stat-label  { margin-top: 18px; font-size: 16px; font-weight: 700; line-height: 1.24; }
       .stat-detail { margin-top: 14px; color: var(--muted); font-size: 14px; font-weight: 400; line-height: 1.55; }
 
@@ -397,7 +403,8 @@
         width: 58px;
         height: 58px;
         border-radius: 50%;
-        background: rgba(190,255,0,0.68);
+        border: 1.5px solid var(--accent);
+        background: rgba(190,255,0,0.26);
         color: var(--foreground);
         font-size: 13px;
         font-weight: 760;
@@ -443,6 +450,31 @@
       .case-logo__image--stacked { max-height: 70px !important; }
       .case-title { font-size: 20px; font-weight: 750; margin: 0 0 16px; letter-spacing: -0.01em; }
       .case-copy { font-size: 14px; color: var(--muted); line-height: 1.58; margin: 0; }
+
+      /* ── ECONOMICS CTA ── */
+      .economics-cta { display: flex; justify-content: flex-end; }
+      .income-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 24px;
+        border: 1px solid #111;
+        border-radius: 4px;
+        background: var(--accent);
+        color: #111;
+        font-size: 12px;
+        font-weight: 850;
+        letter-spacing: 0.14em;
+        line-height: 1;
+        text-transform: uppercase;
+        transition: background 220ms ease, color 220ms ease, transform 220ms ease;
+      }
+      .income-button:hover {
+        background: #111;
+        color: #fff;
+        transform: translateY(-1px);
+      }
 
       /* ── PROGRAM LIST ── */
       #program .grid--split { grid-template-columns: minmax(0,560px) minmax(0,874px); align-items: center; gap: 98px; }
@@ -543,6 +575,10 @@
 
         /* Stats */
         .stat-value { font-size: 52px; margin-top: 28px; }
+        #data .stat-value {
+          font-size: clamp(58px, 15vw, 86px);
+          line-height: 0.9;
+        }
 
         /* Opportunity levers */
         .opportunity-process { gap: 36px; }
@@ -590,6 +626,8 @@
         #economics [style*="padding:40px 40px 40px 0"] { padding: 32px 0 !important; border-left: none !important; }
         #economics [style*="padding:40px 0 40px 40px"] { padding: 32px 0 !important; border-left: none !important; }
         #economics [style*="border-bottom:1px solid var(--divider)"] { border-bottom: 1px solid var(--divider) !important; }
+        .economics-cta { justify-content: flex-start; }
+        .income-button { width: 100%; }
 
         /* Cases */
         .case-card { padding: 28px 0; }
@@ -787,8 +825,8 @@
     <nav class="side-nav" aria-label="Presentation sections">
       <ul>
         <li><a href="#cover"          data-section-link><span data-en="01 Cover"          data-es="01 Inicio"         >01 Inicio</span><span></span></a></li>
-        <li><a href="#market"         data-section-link><span data-en="02 Market"         data-es="02 Mercado"        >02 Mercado</span><span></span></a></li>
-        <li><a href="#data"           data-section-link><span data-en="03 Data"           data-es="03 Datos"          >03 Datos</span><span></span></a></li>
+        <li><a href="#data"           data-section-link><span data-en="02 Data"           data-es="02 Datos"          >02 Datos</span><span></span></a></li>
+        <li><a href="#market"         data-section-link><span data-en="03 Market"         data-es="03 Mercado"        >03 Mercado</span><span></span></a></li>
         <li><a href="#solution"       data-section-link><span data-en="04 Solution"       data-es="04 Solución"       >04 Solución</span><span></span></a></li>
         <li><a href="#opportunity"    data-section-link><span data-en="05 Opportunity"    data-es="05 Oportunidad"    >05 Oportunidad</span><span></span></a></li>
         <li><a href="#infrastructure" data-section-link><span data-en="06 Infrastructure" data-es="06 Infraestructura">06 Infraestructura</span><span></span></a></li>
@@ -815,9 +853,9 @@
             <span class="accent-bar" aria-hidden="true"></span>
             <div>
               <p class="sub-text"
-                 data-en="Drelife builds the official pre-owned channel for fashion brands. Fully operated by us, 100% white-label."
-                 data-es="Drelife construye el canal oficial de pre-owned para marcas de moda. Operado íntegramente por nosotros, 100% white-label.">
-                Drelife construye el canal oficial de pre-owned para marcas de moda. Operado íntegramente por nosotros, 100% white-label.
+                 data-en="Drelife builds the official pre-owned channel for fashion brands: the resale entry point to a broader circular infrastructure. Fully operated by us, 100% white-label."
+                 data-es="Drelife construye el canal oficial de pre-owned para marcas de moda: el punto de entrada de resale a una infraestructura circular más amplia. Operado íntegramente por nosotros, 100% white-label.">
+                Drelife construye el canal oficial de pre-owned para marcas de moda: el punto de entrada de resale a una infraestructura circular más amplia. Operado íntegramente por nosotros, 100% white-label.
               </p>
             </div>
           </div>
@@ -875,7 +913,69 @@
       </section>
 
       <!-- ══════════════════════════════════════════════
-           02 · MERCADO
+           02 · DATOS
+      ══════════════════════════════════════════════ -->
+      <section id="data" class="slide" data-title="Data">
+        <div class="container">
+          <div class="grid grid--header grid--split" style="margin-bottom: 56px">
+            <div>
+              <div class="section-label reveal"
+                   data-en="02 Data" data-es="02 Datos">02 Datos</div>
+              <h2 class="headline reveal delay-1">
+                <span data-en="The numbers" data-es="Los datos">Los datos</span><br />
+                <span class="italic" data-en="are already here." data-es="ya están aquí.">ya están aquí.</span>
+              </h2>
+            </div>
+            <p class="sub-text reveal delay-2"
+               data-en="Pre-owned fashion is no longer a niche it is becoming a structural layer of how consumers shop, value and relate to brands."
+               data-es="La moda pre-owned ya no es un nicho: se está convirtiendo en una capa estructural de cómo los consumidores compran, valoran y se relacionan con las marcas.">
+              La moda pre-owned ya no es un nicho: se está convirtiendo en una capa estructural de cómo los consumidores compran, valoran y se relacionan con las marcas.
+            </p>
+          </div>
+
+          <div class="tile-grid grid--three">
+            <article class="tile tile--hover reveal delay-1">
+              <div class="tile-kicker">01</div>
+              <div class="stat-value"><span>$</span>350<span style="font-size:40px">B</span></div>
+              <div class="stat-label"
+                   data-en="Global pre-owned fashion market by 2028"
+                   data-es="Mercado global de moda pre-owned en 2028">Mercado global de moda pre-owned en 2028</div>
+              <p class="stat-detail"
+                 data-en="Growing 3x faster than the primary fashion market, across categories and price points."
+                 data-es="Crece 3 veces más rápido que el mercado de moda primaria, atravesando categorías y rangos de precio.">
+                Crece 3 veces más rápido que el mercado de moda primaria, atravesando categorías y rangos de precio.
+              </p>
+            </article>
+            <article class="tile tile--hover reveal delay-2">
+              <div class="tile-kicker">02</div>
+              <div class="stat-value">+70<span style="font-size:40px">%</span></div>
+              <div class="stat-label"
+                   data-en="of market growth will come from Gen Z &amp; Millennials"
+                   data-es="del crecimiento vendrá de Gen Z y Millennials">del crecimiento vendrá de Gen Z y Millennials</div>
+              <p class="stat-detail"
+                 data-en="Younger consumers are turning resale into a recurring buying behavior across price points and categories."
+                 data-es="Los consumidores jóvenes están convirtiendo resale en un hábito recurrente, transversal a precios y categorías.">
+                Los consumidores jóvenes están convirtiendo resale en un hábito recurrente, transversal a precios y categorías.
+              </p>
+            </article>
+            <article class="tile tile--dark reveal delay-3">
+              <div class="tile-kicker">03</div>
+              <div class="stat-value">~50<span style="font-size:40px">%</span></div>
+              <div class="stat-label"
+                   data-en="of shoppers discover secondhand through social feeds and creators"
+                   data-es="de los consumidores descubren secondhand en redes y creadores">de los consumidores descubren secondhand en redes y creadores</div>
+              <p class="stat-detail"
+                 data-en="Discovery is moving off-platform. Resale is becoming part of the inspiration journey, not only a post-purchase destination."
+                 data-es="El descubrimiento se mueve fuera de los marketplaces. Resale entra en el journey de inspiración, no solo después de la compra.">
+                El descubrimiento se mueve fuera de los marketplaces. Resale entra en el journey de inspiración, no solo después de la compra.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════
+           03 · MERCADO
       ══════════════════════════════════════════════ -->
       <section id="market" class="slide" data-title="Market">
         <div class="container">
@@ -883,7 +983,7 @@
           <div class="brand-split reveal">
             <div class="brand-left">
               <div class="section-label"
-                   data-en="02 Market" data-es="02 Mercado">02 Mercado</div>
+                   data-en="03 Market" data-es="03 Mercado">03 Mercado</div>
               <div class="brand-headline">
                 <h2 class="headline"
                     data-en="The pre-owned market" data-es="El mercado pre-owned">El mercado pre-owned</h2>
@@ -958,68 +1058,6 @@
       </section>
 
       <!-- ══════════════════════════════════════════════
-           03 · DATOS
-      ══════════════════════════════════════════════ -->
-      <section id="data" class="slide" data-title="Data">
-        <div class="container">
-          <div class="grid grid--header grid--split" style="margin-bottom: 56px">
-            <div>
-              <div class="section-label reveal"
-                   data-en="03 Data" data-es="03 Datos">03 Datos</div>
-              <h2 class="headline reveal delay-1">
-                <span data-en="The numbers" data-es="Los datos">Los datos</span><br />
-                <span class="italic" data-en="are already here." data-es="ya están aquí.">ya están aquí.</span>
-              </h2>
-            </div>
-            <p class="sub-text reveal delay-2"
-               data-en="Pre-owned fashion is no longer a niche it is becoming a structural layer of how consumers shop, value and relate to brands."
-               data-es="La moda pre-owned ya no es un nicho: se está convirtiendo en una capa estructural de cómo los consumidores compran, valoran y se relacionan con las marcas.">
-              La moda pre-owned ya no es un nicho: se está convirtiendo en una capa estructural de cómo los consumidores compran, valoran y se relacionan con las marcas.
-            </p>
-          </div>
-
-          <div class="tile-grid grid--three">
-            <article class="tile tile--hover reveal delay-1">
-              <div class="tile-kicker">01</div>
-              <div class="stat-value"><span>$</span>350<span style="font-size:40px">B</span></div>
-              <div class="stat-label"
-                   data-en="Global pre-owned fashion market by 2028"
-                   data-es="Mercado global de moda pre-owned en 2028">Mercado global de moda pre-owned en 2028</div>
-              <p class="stat-detail"
-                 data-en="Growing 3x faster than the primary fashion market. Premium and luxury segments lead growth."
-                 data-es="Crece 3 veces más rápido que el mercado de moda primaria. Los segmentos premium y lujo lideran el crecimiento.">
-                Crece 3 veces más rápido que el mercado de moda primaria. Los segmentos premium y lujo lideran el crecimiento.
-              </p>
-            </article>
-            <article class="tile tile--hover reveal delay-2">
-              <div class="tile-kicker">02</div>
-              <div class="stat-value">+70<span style="font-size:40px">%</span></div>
-              <div class="stat-label"
-                   data-en="Of Gen Z &amp; Millennial luxury buyers already shop pre-owned"
-                   data-es="De los compradores de lujo Gen Z y Millennial ya compran pre-owned">De los compradores de lujo Gen Z y Millennial ya compran pre-owned</div>
-              <p class="stat-detail"
-                 data-en="52% of consumers research resale value before buying a new piece."
-                 data-es="El 52% de los consumidores ya investiga el valor de reventa antes de comprar una prenda nueva.">
-                El 52% de los consumidores ya investiga el valor de reventa antes de comprar una prenda nueva.
-              </p>
-            </article>
-            <article class="tile tile--dark reveal delay-3">
-              <div class="tile-kicker">03</div>
-              <div class="stat-value">2027</div>
-              <div class="stat-label"
-                   data-en="EU regulation on product lifecycle accountability enters into force"
-                   data-es="La regulación UE de responsabilidad sobre ciclo de vida entra en vigor">La regulación UE de responsabilidad sobre ciclo de vida entra en vigor</div>
-              <p class="stat-detail"
-                 data-en="Brands will be legally responsible for what happens to their products post-purchase. Acting now is competitive advantage. Acting in 2026 is damage control."
-                 data-es="Las marcas serán responsables de qué ocurre con sus productos tras la venta. Actuar ahora es ventaja competitiva. Actuar en 2026 es apagar fuegos.">
-                Las marcas serán responsables de qué ocurre con sus productos tras la venta. Actuar ahora es ventaja competitiva. Actuar en 2026 es apagar fuegos.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- ══════════════════════════════════════════════
            04 · SOLUCIÓN
       ══════════════════════════════════════════════ -->
       <section id="solution" class="slide" data-title="Solution">
@@ -1032,9 +1070,9 @@
               <span class="italic" data-en="Pre-owned Channel." data-es="Canal Pre-owned.">Canal Pre-owned.</span>
             </h2>
             <p class="sub-text reveal delay-2"
-               data-en="Build the official resale channel for your brand. Your label, your prices, your data. The full relationship with the customer, yours from end to end."
-               data-es="Construye el canal oficial de reventa de tu marca. Tu etiqueta, tus precios, tus datos. La relación completa con el cliente, tuya de principio a fin.">
-              Construye el canal oficial de reventa de tu marca. Tu etiqueta, tus precios, tus datos. La relación completa con el cliente, tuya de principio a fin.
+               data-en="Build the official resale channel for your brand. Your label, your prices, your data and the first layer of circular infrastructure. The full relationship with the customer, yours from end to end."
+               data-es="Construye el canal oficial de reventa de tu marca. Tu etiqueta, tus precios, tus datos y la primera capa de infraestructura circular. La relación completa con el cliente, tuya de principio a fin.">
+              Construye el canal oficial de reventa de tu marca. Tu etiqueta, tus precios, tus datos y la primera capa de infraestructura circular. La relación completa con el cliente, tuya de principio a fin.
             </p>
           </div>
 
@@ -1075,6 +1113,7 @@
               </p>
             </div>
           </div>
+
         </div>
       </section>
 
@@ -1135,11 +1174,11 @@
               <li class="lever-item reveal delay-4">
                 <span class="lever-number">04</span>
                 <div>
-                  <h3 class="lever-title" data-en="Regulatory readiness" data-es="Preparación regulatoria">Preparación regulatoria</h3>
+                  <h3 class="lever-title" data-en="Captures existing demand" data-es="Captura demanda existente">Captura demanda existente</h3>
                   <p class="lever-copy"
-                   data-en="The EU product lifecycle regulation comes into force in 2027. Brands that act now will arrive with the channel already live."
-                   data-es="La regulación UE de ciclo de vida entra en vigor en 2027. Las marcas que actúen ahora llegan con el canal operativo.">
-                    La regulación UE de ciclo de vida entra en vigor en 2027. Las marcas que actúen ahora llegan con el canal operativo.
+                   data-en="Resale traffic and discovery already happen across marketplaces and social feeds. The official channel brings that demand back to the brand."
+                   data-es="El tráfico y el descubrimiento de resale ya ocurren en marketplaces y redes. El canal oficial devuelve esa demanda a la marca.">
+                    El tráfico y el descubrimiento de resale ya ocurren en marketplaces y redes. El canal oficial devuelve esa demanda a la marca.
                   </p>
                 </div>
               </li>
@@ -1164,9 +1203,9 @@
               </h2>
             </div>
             <p class="sub-text reveal delay-2"
-               data-en="Technology, logistics and strategy in a single solution. We run the full operation your brand only sees results."
-               data-es="Tecnología, logística y estrategia en una sola solución. Nosotros operamos todo para que tu marca solo vea resultados.">
-              Tecnología, logística y estrategia en una sola solución. Nosotros operamos todo para que tu marca solo vea resultados.
+               data-en="Technology, logistics and strategy in a resale-first solution. We run the full operation so your brand can manage product lifetime and recovery value without operational load."
+               data-es="Tecnología, logística y estrategia en una solución resale-first. Nosotros operamos todo para que tu marca pueda gestionar vida útil y valor de recuperación sin carga operativa.">
+              Tecnología, logística y estrategia en una solución resale-first. Nosotros operamos todo para que tu marca pueda gestionar vida útil y valor de recuperación sin carga operativa.
             </p>
           </div>
 
@@ -1254,7 +1293,6 @@
         </div>
       </section>
 
-
       <!-- ══════════════════════════════════════════════
            07 · MODELO ECONÓMICO
       ══════════════════════════════════════════════ -->
@@ -1319,6 +1357,15 @@
                 El coste de adquisición de un cliente nuevo en moda oscila entre €30 y €120. El coste de reactivar a un cliente existente a través del canal pre-owned es estructuralmente inferior y genera datos propios sobre su comportamiento de compra.
               </p>
             </div>
+          </div>
+
+          <div class="economics-cta reveal delay-3">
+            <a class="income-button"
+               href="https://drelife.com/revenuesimulator/"
+               target="_blank"
+               rel="noopener noreferrer"
+               data-en="Calculate your income"
+               data-es="Calcula tu income">Calcula tu income</a>
           </div>
         </div>
       </section>
@@ -1393,7 +1440,7 @@
       </section>
 
       <!-- ══════════════════════════════════════════════
-           08 · CIERRE
+           09 · CIERRE
       ══════════════════════════════════════════════ -->
       <section id="closing" class="slide" data-title="Closing">
         <div class="container">
